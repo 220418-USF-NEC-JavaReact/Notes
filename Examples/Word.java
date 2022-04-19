@@ -29,9 +29,52 @@ class Word {
     }
 
     //Method to append a character
+    void append(char add){
+        //Our arrays are not resizeble, so we need a new array to the new word
+        char[] appended = new char[wordChars.length+1];
+
+        int index = 0;
+        while(index < appended.length){
+            //We need to know when we are done with original word
+            if(index == wordChars.length){
+                appended[index] = add;
+            } else {
+                appended[index] = wordChars[index];
+            }
+            index++;
+        }
+
+        wordChars = appended;
+
+    }
+
+    void append(char... add){
+        //Our arrays are not resizeble, so we need a new array to the new word
+        char[] appended = new char[wordChars.length + add.length];
+
+        int index = 0;
+        while(index < appended.length){
+            //We need to know when we are done with original word
+            if(index >= wordChars.length){
+                appended[index] = add[index - wordChars.length];
+            } else {
+                appended[index] = wordChars[index];
+            }
+            index++;
+        }
+
+        wordChars = appended;
+
+    }
 
     //Uppercase/lower (stretch)
 
 
     //Substring(starting ending)
+
+    void printWord(){
+        for(int i=0; i<wordChars.length; i++){
+            System.out.print(wordChars[i]);
+        }
+    }
 }
