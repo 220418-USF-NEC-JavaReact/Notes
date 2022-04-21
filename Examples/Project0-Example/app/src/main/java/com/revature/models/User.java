@@ -5,9 +5,8 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
 
-public class User{
+public class User implements Comparable<User>{
 
-    private int id;
     private String first;
     private String last;
     private String email;
@@ -18,7 +17,6 @@ public class User{
     private Set<User> following;
 
     public User(){
-
         posts = new ArrayList<>();
         followers = new HashSet<>();
         following = new HashSet<>();
@@ -38,8 +36,95 @@ public class User{
         this.following = new HashSet<>();
     }
 
+    public String getEmail() {
+        return email;
+    }
 
-    
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
+    public String getFirst() {
+        return first;
+    }
+
+    public void setFirst(String first) {
+        this.first = first;
+    }
+
+    public String getLast() {
+        return last;
+    }
+
+    public void setLast(String last) {
+        this.last = last;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public Set<User> getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(Set<User> followers) {
+        this.followers = followers;
+    }
+
+    public Set<User> getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(Set<User> following) {
+        this.following = following;
+    }
+
+    @Override
+    public String toString(){
+        return "User:{\n\t"
+        + "first name:" + first + "\n\t"
+        + "last name:" + last + "\n\t"
+        + "email:" + email + "\n\t"
+        + "username:" + username + "\n\t"
+        + "password:" + password + "\n\t"
+        + "posts:" + posts.size() + "\n\t"
+        + "followers:" + followers.size() + "\n\t"
+        + "following:" + following.size() + "\n"
+        + "}";
+    }
+
+    @Override
+    public int compareTo(User u){
+        if(this.followers.size() > u.followers.size()){
+            return -1;
+        }
+        else if(this.followers.size() < u.followers.size()){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
 
 }

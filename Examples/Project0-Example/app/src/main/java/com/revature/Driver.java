@@ -3,9 +3,93 @@
  */
 package com.revature;
 
+import com.revature.models.*;
+import com.revature.services.*;
+import com.revature.dao.*;
+import com.revature.exceptions.UsernameOrPasswordIncorrectException;
+import java.util.Scanner;
+import java.util.List;
+import java.util.Iterator;
+
 public class Driver {
 
+    private static IUserDao uDao = new UserDaoMock();
+    private static UserService uServ = new UserService(uDao);
+
     public static void main(String[] args) {
-        
+
+        Scanner scan = new Scanner(System.in);
+        boolean isDone = false;
+        User loggedIn = null;
+
+        MockUserDB.getInstance().populateUsers();
+
+        //While the user is not done, continue running the application
+        System.out.println("Hello, welcome to the worst social media app");
+        while(!isDone){
+            
+            //We can use a if statement to see if the loggedIn user is null, if they are
+            //Then they need to login or register an account
+
+            if(loggedIn == null){
+                //Do the login/register logic here
+                System.out.println("Seems like you aren't logged in partner");
+                System.out.println("Would you like to login or register?");
+                System.out.println("Choose 1 to register, choose 2 to login");
+                String input = scan.nextLine();
+                System.out.println("After the scan.nextLine()");
+                if(input.equals("1")){
+                    //Do the register logic
+                    System.out.println("What is your first name?");
+                    String first = scan.nextLine();
+                    System.out.println("What is your last name?");
+                    String last = scan.nextLine();
+                    System.out.println("What do you want your username to be?");
+                    String username = scan.nextLine();
+                    System.out.println("What is your email?");
+                    String email = scan.nextLine();
+                    System.out.println("What is your password?");
+                    String password = scan.nextLine();
+                    uServ.registerUser(first, last, username, email, password);
+                }
+                else {
+                    System.out.println("What is your username:");
+                    String username = scan.nextLine();
+                    System.out.println("What is your password?");
+                    String password = scan.nextLine();
+                    try{
+                        loggedIn = uServ.loginUser(username, password);
+                        System.out.println(loggedIn);
+                    } catch(UsernameOrPasswordIncorrectException e){
+                        e.printStackTrace();
+                    }
+                    
+                }
+            } else {
+                System.out.println("Looks like you got logged in");
+                System.out.println("What would you like to do next?");
+                System.out.println("Choose 1 to create a post, 2 to view your feed");
+                System.out.println("3 to search for new people to follow");
+                int input = scan.nextInt();
+                scan.nextLine();
+                switch(input){
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        //Showing an iterator
+                        List<User> uList = uServ.getTopUsers();
+                        Iterator<User> uIter = uList.iterator();
+                        System.out.println("Username\t\t\t\tFollowers");
+                        while(uIter.hasNext()){
+                            User u = uIter.next();
+                            System.out.println(u.getUsername() +"\t\t\t\t" + u.getFollowers().size());
+                        }
+                        break;
+                }
+                isDone = true;
+            }
+        }
     }
 }
