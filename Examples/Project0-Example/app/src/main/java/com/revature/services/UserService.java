@@ -3,6 +3,9 @@ package com.revature.services;
 import com.revature.models.User;
 import com.revature.dao.IUserDao;
 import com.revature.exceptions.UsernameOrPasswordIncorrectException;
+import com.revature.utils.LoggingUtil;
+import com.sun.javafx.util.Logging;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
@@ -28,6 +31,9 @@ public class UserService{
         //To store the data in the persistance layer
         uDao.createUser(register);
 
+        //When a user is registered we can log it
+        LoggingUtil.logger.info("A new user was registered");
+
     }
 
     //We need a way to retrieve a user with specific username and password from the database
@@ -35,9 +41,11 @@ public class UserService{
 
         User u = uDao.getUserByUsername(username);
 
-        if(uDao.getUserByUsername(username) == null || !password.equals(u.getPassword())){
+        if(u == null || !password.equals(u.getPassword())){
+            LoggingUtil.logger.warn("User login attempt failed");
             throw new UsernameOrPasswordIncorrectException();
         } else {
+            LoggingUtil.logger.info("User " + u.getUsername() + " was logged in");
             return u;
         }
 

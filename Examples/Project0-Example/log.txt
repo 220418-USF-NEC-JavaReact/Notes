@@ -1,0 +1,2 @@
+2022-04-22 13:29:58 INFO  LoggingUtil:35 - A new user was registered
+2022-04-22 13:30:16 INFO  LoggingUtil:48 - User elmcgill was logged in
