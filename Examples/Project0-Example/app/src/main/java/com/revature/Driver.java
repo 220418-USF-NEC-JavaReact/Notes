@@ -10,11 +10,14 @@ import com.revature.exceptions.UsernameOrPasswordIncorrectException;
 import java.util.Scanner;
 import java.util.List;
 import java.util.Iterator;
+import java.util.Set;
 
 public class Driver {
 
     private static IUserDao uDao = new UserDaoMock();
     private static UserService uServ = new UserService(uDao);
+    private static IPostDao pDao = new PostDaoMock();
+    private static PostService pServ = new PostService(pDao);
 
     public static void main(String[] args) {
 
@@ -23,6 +26,7 @@ public class Driver {
         User loggedIn = null;
 
         MockUserDB.getInstance().populateUsers();
+        MockPostDB.getInstance().populatePosts();
 
         //While the user is not done, continue running the application
         System.out.println("Hello, welcome to the worst social media app");
@@ -37,7 +41,6 @@ public class Driver {
                 System.out.println("Would you like to login or register?");
                 System.out.println("Choose 1 to register, choose 2 to login");
                 String input = scan.nextLine();
-                System.out.println("After the scan.nextLine()");
                 if(input.equals("1")){
                     //Do the register logic
                     System.out.println("What is your first name?");
@@ -74,22 +77,45 @@ public class Driver {
                 scan.nextLine();
                 switch(input){
                     case 1:
+                        System.out.println("Please enter your content");
+                        String content = scan.nextLine();
+                        pServ.createPost(loggedIn, content);
                         break;
                     case 2:
+                        Set<Post> feed = pServ.getUserFeed(loggedIn);
+
+                        Iterator<Post> pIterator = feed.iterator();
+
+                        while(pIterator.hasNext()){
+                            Post p = pIterator.next();
+                            System.out.println(p.getUser().getUsername() + "\t\t\t\t" + p.getTimeStamp().toString());
+                            System.out.println(p.getContent());
+                            System.out.println();
+                        }
                         break;
                     case 3:
                         //Showing an iterator
                         List<User> uList = uServ.getTopUsers();
                         Iterator<User> uIter = uList.iterator();
-                        System.out.println("Username\t\t\t\tFollowers");
+                        System.out.println("Username\t\t\t\t\tFollowers");
                         while(uIter.hasNext()){
                             User u = uIter.next();
-                            System.out.println(u.getUsername() +"\t\t\t\t" + u.getFollowers().size());
+                            System.out.println(u.getUsername() +"\t\t\t\t\t" + u.getFollowers().size());
                         }
+                        System.out.println("Who would you like to follow?");
+                        System.out.println("Enter their username below:");
+                        String username = scan.nextLine();
+                        uServ.followUser(loggedIn, username);
                         break;
                 }
-                isDone = true;
+
+                System.out.println("Are you finished? Y/N");
+                String response = scan.nextLine();
+                //Use a fancy ternary operated I mentioned but never used
+                isDone = response.equals("Y") ? true : false;
+
             }
+
         }
     }
 }

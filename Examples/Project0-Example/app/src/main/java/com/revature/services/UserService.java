@@ -6,6 +6,7 @@ import com.revature.exceptions.UsernameOrPasswordIncorrectException;
 import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
 
 public class UserService{
 
@@ -40,6 +41,29 @@ public class UserService{
             return u;
         }
 
+    }
+
+    public void followUser(User current, String username){
+        //When we follow a user
+        //Put the user in out following list
+        //Put ourselves, in the other users followers list
+        //We need to get the person we actaully want to follow, this is an opportunity for
+        //Another exception
+        User followie = uDao.getUserByUsername(username);
+
+        //Take the person that is logged in, and get the list of people they are following
+        Set<User> following = current.getFollowing();
+        //Add the user we want to follow to our following list
+        following.add(followie);
+        current.setFollowing(following);
+
+        //Update the person object that is being followed
+        Set<User> followers = followie.getFollowers();
+        followers.add(current);
+        followie.setFollowers(followers);
+
+        uDao.createUser(current);
+        uDao.createUser(followie);
     }
 
     public List<User> getTopUsers(){

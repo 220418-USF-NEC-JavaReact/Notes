@@ -12,7 +12,7 @@ public class Post {
 
     }
 
-    public Post(String content, Date timeStamp, User u){
+    public Post(String content, User u, Date timeStamp){
         this.content = content;
         this.timeStamp = timeStamp;
         this.user = u;
