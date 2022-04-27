@@ -35,6 +35,9 @@ insert into social values
 -- the star says to select everything from the table
 select * from social;
 
+-- If we want to select specific columns, we can tell the select which ones we want
+select postcontent from social;
 
+select username from social;
 
 
