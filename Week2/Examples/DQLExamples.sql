@@ -22,8 +22,8 @@ insert into post (posted_date, content, users_fk) values
 	('2022-04-27', 'Morty 2', 2),
 	('2022-04-27', 'Gear Head 1', 3),
 	('2022-04-27', 'Gear Head 2', 3),
-	('2022-04-27', 'Bird Person 1', 5),
-	('2022-04-27', 'Bird Person 2', 5);
+	('2022-04-27', 'Bird Person 1', 4),
+	('2022-04-27', 'Bird Person 2', 4);
 
 -- We can select across tables
 select u.first_name as user, p.content as content from users u, post p where u.user_id = p.users_fk;
@@ -60,3 +60,29 @@ select * from users where first_name like 'M_r%' or password != 'password';
 select * from users where user_id > 3;
 
 insert into following_juction_table (following_id, follower_id) values (2,1);
+
+insert into following_juction_table (following_id, follower_id) values 
+	(2,3),
+	(2,6),
+	(2,5);
+
+-- Scalar Functions
+-- Takes in a single object, and transforms it
+select length('Hello world');
+select lower('Hello World');
+select upper('hello world');
+
+-- Aggregate Functions
+-- Will take in a group of objects, and return some data about them
+select count(*) as num_of_posts from post;
+
+select u.first_name, count(f.follower_id)
+from users u, following_juction_table f
+where u.user_id = f.following_id
+group by u.first_name;
+
+select u.first_name as User, count(p.post_id) as NumberOfPosts
+from users u, post p
+where u.user_id = p.users_fk
+group by u.first_name
+order by count(p.post_id) desc;
