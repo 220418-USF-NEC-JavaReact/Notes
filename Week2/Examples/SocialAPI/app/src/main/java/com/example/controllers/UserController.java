@@ -3,6 +3,7 @@ package com.example.controllers;
 import com.example.models.LoginObject;
 import com.example.models.RegisterObject;
 import com.example.models.User;
+import com.example.services.PostService;
 import com.example.services.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.javalin.http.Handler;
@@ -59,6 +60,34 @@ public class UserController {
         u.setUserId(id);
         us.deleteUser(u);
         ctx.result("User deleted");
+    };
+
+    public Handler handleFollowUser = (ctx) -> {
+        if(ctx.req.getSession().getAttribute("id") == null){
+            ctx.status(401);
+            ctx.result("You must be logged in to follow another user");
+        } else {
+            int userId = Integer.parseInt((String) ctx.req.getSession().getAttribute("id"));
+
+            int followingId = Integer.parseInt(ctx.pathParam("id"));
+
+            us.createFollowingRelationship(followingId, userId);
+
+            ctx.result("User followed");
+        }
+    };
+
+    public Handler handleFullUserObject = (ctx) -> {
+        if(ctx.req.getSession().getAttribute("loggedIn") == null){
+            ctx.status(401);
+            ctx.result("You must be logged in to follow another user");
+        } else {
+            String email = (String) ctx.req.getSession().getAttribute("loggedIn");
+
+            User current = us.populateUserObject(email);
+
+            ctx.result(om.writeValueAsString(current));
+        }
     };
 
 }

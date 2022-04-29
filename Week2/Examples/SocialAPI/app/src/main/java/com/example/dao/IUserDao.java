@@ -3,6 +3,7 @@ package com.example.dao;
 import com.example.models.User;
 
 import java.util.List;
+import java.util.Set;
 
 public interface IUserDao {
 
@@ -22,5 +23,11 @@ public interface IUserDao {
 
     //Delete
     public void deleteUser(User u);
+
+    public void insertFollowing(int followingId, int followerId);
+
+    public Set<User> getFollowing(int id);
+
+    public Set<User> getFollowers(int id);
 
 }

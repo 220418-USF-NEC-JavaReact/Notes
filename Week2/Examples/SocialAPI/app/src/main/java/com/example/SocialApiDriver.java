@@ -23,11 +23,13 @@ public class SocialApiDriver {
     public static void main(String[] args) {
 
         IUserDao ud = new UserDaoJDBC();
-        UserService us = new UserService(ud);
-        UserController uc = new UserController(us);
+
+
 
         IPostDao pd = new PostDaoJDBC();
         PostService ps = new PostService(pd);
+        UserService us = new UserService(ud, pd);
+        UserController uc = new UserController(us);
         PostController pc = new PostController(ps);
 
         Javalin server = Javalin.create(config -> {
@@ -40,6 +42,8 @@ public class SocialApiDriver {
                 post("/login", uc.handleLogin);
                 put("/", uc.handleUpdateUser);
                 delete("/{id}", uc.handleDeleteUser);
+                get("/follow/{id}", uc.handleFollowUser);
+                get("/full", uc.handleFullUserObject);
             });
             path("posts", () -> {
                 post("/", pc.handleCreatePost);

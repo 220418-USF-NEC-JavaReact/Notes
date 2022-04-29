@@ -1,14 +1,17 @@
 package com.example.services;
 
+import com.example.dao.IPostDao;
 import com.example.dao.IUserDao;
 import com.example.models.User;
 
 public class UserService {
 
     private IUserDao ud;
+    private IPostDao pd;
 
-    public UserService(IUserDao ud){
+    public UserService(IUserDao ud, IPostDao pd){
         this.ud = ud;
+        this.pd = pd;
     }
 
     //Typically when we create a user in a application, we are registering it
@@ -41,6 +44,20 @@ public class UserService {
 
     public void deleteUser(User u){
         ud.deleteUser(u);
+    }
+
+    public void createFollowingRelationship(int followingId, int userId){
+        ud.insertFollowing(followingId, userId);
+    }
+
+    public User populateUserObject(String email){
+        User u = ud.readUserByEmail(email);
+
+        u.setFollowing(ud.getFollowing(u.getUserId()));
+        u.setFollowers(ud.getFollowers(u.getUserId()));
+        u.setPosts(pd.readPostByUser(u.getUserId()));
+
+        return u;
     }
 
 
