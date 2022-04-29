@@ -3,9 +3,13 @@
  */
 package com.example;
 
+import com.example.controllers.PostController;
 import com.example.controllers.UserController;
+import com.example.dao.IPostDao;
 import com.example.dao.IUserDao;
+import com.example.dao.PostDaoJDBC;
 import com.example.dao.UserDaoJDBC;
+import com.example.services.PostService;
 import com.example.services.UserService;
 import com.example.utils.ConnectionSingleton;
 import io.javalin.Javalin;
@@ -22,6 +26,10 @@ public class SocialApiDriver {
         UserService us = new UserService(ud);
         UserController uc = new UserController(us);
 
+        IPostDao pd = new PostDaoJDBC();
+        PostService ps = new PostService(pd);
+        PostController pc = new PostController(ps);
+
         Javalin server = Javalin.create(config -> {
             config.enableCorsForAllOrigins();
         });
@@ -32,6 +40,10 @@ public class SocialApiDriver {
                 post("/login", uc.handleLogin);
                 put("/", uc.handleUpdateUser);
                 delete("/{id}", uc.handleDeleteUser);
+            });
+            path("posts", () -> {
+                post("/", pc.handleCreatePost);
+                get("/", pc.handleGetUserPosts);
             });
         });
 

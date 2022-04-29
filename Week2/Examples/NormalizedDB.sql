@@ -18,7 +18,7 @@ What do we need for our socialhub database:
 */
 
 create table users(
-	user_id int primary key generated always as identity,
+	user_id int primary key,
 	first_name varchar(64),
 	last_name varchar(64),
 	email varchar(136) unique,
@@ -55,6 +55,10 @@ select * from post;
 
 -- Now at this point, because of reference integrity, if we want to delete a user, we must delete all of their posts
 -- The way we can drop all the posts with the CASCADE keyword
+drop table users;
+
+drop table following_juction_table cascade;
+drop table post cascade;
 drop table users;
 
 insert into following_juction_table (following_id, follower_id) values (1,2);

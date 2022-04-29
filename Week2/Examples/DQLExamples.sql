@@ -63,7 +63,7 @@ insert into following_juction_table (following_id, follower_id) values (2,1);
 
 insert into following_juction_table (following_id, follower_id) values 
 	(2,3),
-	(2,6),
+	(2,4),
 	(2,5);
 
 -- Scalar Functions

@@ -40,6 +40,7 @@ public class UserController {
         } else {
             //We could also, if the user is logged in successfully, setup a session for them
             ctx.req.getSession().setAttribute("loggedIn", u.getEmail());
+            ctx.req.getSession().setAttribute("id", ""+u.getUserId());
             ctx.result(om.writeValueAsString(u));
         }
     };
