@@ -15,6 +15,12 @@ public class App {
             config.addStaticFiles("/public", Location.CLASSPATH);
         });
 
+        app.post("/login", ctx -> {
+            String username = ctx.formParam("username");
+            String password = ctx.formParam("password");
+            ctx.result(username + " " + password);
+        });
+
         app.start(8080);
 
     }

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello Forms</title>
+    </head>
+    <body>
+        <!-- We need to set those form attributes we talked about prev-->
+        <form method="post" action="http://localhost:8080/login" target="http://localhost:8080/hello.html">
+            <label for="username">Username</label>
+            <input type="text" required name="username" />
+            <label for="password">Password</label>
+            <input type="password" required minlength="8" name="password"/>
+            <input type="submit" value="Login"/>
+        </form>
+    </body>
+</html>

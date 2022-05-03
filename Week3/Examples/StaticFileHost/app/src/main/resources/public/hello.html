@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello HTML</title>
+    <link rel="stylesheet" href="helloCss.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Radio+Canada&display=swap" rel="stylesheet">
 </head>
 <body>
     <head>
@@ -12,11 +16,13 @@
     </head>
     <!-- We can make comments with this convention -->
     <!-- h1 is our largest heading, they go all the way down to h6-->
-    <h1>Welcome to Ethan's favorite recipes</h1>
-    <h2>Ethan is a trainer at Revature, but whiles hes not training he loves to cook</h2>
-    <h3>It obligory to include his life story before we can we can get to the ingrediants so here we go!</h3>
+    <div class="about_section">
+        <h1>Welcome to Ethan's favorite recipes</h1>
+        <h2 id="title_h2">Ethan is a trainer at Revature, but whiles hes not training he loves to cook</h2>
+        <h3>It obligory to include his life story before we can we can get to the ingrediants so here we go!</h3>
+    </div>
     <!-- We can make a div to group together elements-->
-    <div>
+    <div class="life_story">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis hendrerit dolor magna eget. Nisi porta lorem mollis aliquam ut porttitor leo a. Non curabitur gravida arcu ac tortor dignissim. Tellus elementum sagittis vitae et leo duis. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis. Tortor aliquam nulla facilisi cras fermentum odio eu feugiat. Vel risus commodo viverra maecenas. Aliquam purus sit amet luctus venenatis lectus magna fringilla urna. In vitae turpis massa sed elementum tempus egestas. Pellentesque elit eget gravida cum sociis natoque penatibus. Lectus arcu bibendum at varius vel. Sem viverra aliquet eget sit. Ultrices dui sapien eget mi proin sed libero. Morbi tristique senectus et netus et malesuada. Eros in cursus turpis massa tincidunt dui ut. Nulla pellentesque dignissim enim sit amet venenatis. Diam sit amet nisl suscipit adipiscing. Aliquet risus feugiat in ante metus.</p>
         <p>Feugiat vivamus at augue eget. Diam ut venenatis tellus in metus vulputate eu. In nibh mauris cursus mattis molestie a iaculis at erat. Nibh praesent tristique magna sit amet purus. Sem fringilla ut morbi tincidunt augue interdum velit euismod in. Auctor augue mauris augue neque gravida in. Egestas sed sed risus pretium. Tempor nec feugiat nisl pretium fusce id velit. Suspendisse in est ante in nibh mauris cursus. Tortor consequat id porta nibh venenatis cras sed felis eget. Dictum at tempor commodo ullamcorper a lacus vestibulum sed. Aliquet porttitor lacus luctus accumsan. Tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius. Accumsan tortor posuere ac ut consequat semper. Lacinia quis vel eros donec.</p>
         <p>Lacus vel facilisis volutpat est velit. Sed viverra ipsum nunc aliquet. Auctor elit sed vulputate mi. Faucibus vitae aliquet nec ullamcorper. Amet justo donec enim diam vulputate. Ac tortor dignissim convallis aenean et tortor at risus. Tristique et egestas quis ipsum. Lacinia quis vel eros donec. Turpis egestas pretium aenean pharetra magna. Odio facilisis mauris sit amet. Vel facilisis volutpat est velit egestas dui id ornare arcu. Habitant morbi tristique senectus et netus et malesuada fames. Eget nunc scelerisque viverra mauris in aliquam sem fringilla ut. Nulla facilisi etiam dignissim diam quis.</p>
@@ -29,22 +35,22 @@
         <!-- using the tr will create a horizontal row across your webpage-->
         <!-- nesting td will create vertical columns in your table-->
         <tr>
-            <td></td>
-            <td>
+            <td class="left_recipe"></td>
+            <td class="center_recipe">
                 <img src="./mac.jpg" alt="Its literally a box of mac and cheese" width="100px"/>
             </td>
-            <td></td>
+            <td class="right_recipe"></td>
         </tr>
         <tr>
-            <td></td>
-            <td>
+            <td class="left_recipe"></td>
+            <td class="center_recipe">
                 <h2>This is my favorite recipe of all time</h2>
                 <h3>And it is ready in only 7 and a half minutes!</h3>
             </td>
-            <td></td>
+            <td class="right_recipe"></td>
         </tr>
         <tr>
-            <td>
+            <td class="left_recipe">
                 <div>
                     <h3>Here are the ingrediants list:</h3>
                     <ul>
@@ -55,8 +61,8 @@
                     </ul>
                 </div>
             </td>
-            <td></td>
-            <td>
+            <td class="center_recipe"></td>
+            <td class="right_recipe">
                 <div>
                     <h3>How to cook the mac and cheese</h3>
                     <ol>
@@ -75,12 +81,12 @@
             </td>
         </tr>
         <tr>
-            <td></td>
-            <td>
+            <td class="left_recipe"></td>
+            <td class="center_recipe">
                 <h2>Ethan is not liable for any burns, or house fires that occure while making this recipe</h2>
                 <p>Attempt at your own risk</p>
             </td>
-            <td></td>
+            <td class="right_recipe"></td>
         </tr>
     </table>
     

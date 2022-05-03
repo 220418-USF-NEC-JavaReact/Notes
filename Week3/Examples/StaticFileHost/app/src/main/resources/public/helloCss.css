@@ -1,0 +1,43 @@
+* {
+    font-family: 'Radio Canada', sans-serif;
+}
+
+video {
+    margin-left: 540px;
+}
+
+#title_h2{
+    /*color: gray;*/
+    /*color: #2e2e2e;*/
+    color: rgb(46, 46, 46);
+}
+
+.life_story{
+    width: 75%;
+    margin: auto;
+}
+
+.about_section{
+    margin-left: 235px;
+}
+
+table {
+    border: #2e2e2e solid 2px;
+    border-radius: 5px;
+    width: 75%;
+    margin: auto;
+}
+
+.center_recipe{
+    width: 33%;
+    margin: auto;
+    text-align: center;
+}
+
+.left_recipe {
+    width: 33%;
+}
+
+.right_recipe{
+    width: 33%;
+}
