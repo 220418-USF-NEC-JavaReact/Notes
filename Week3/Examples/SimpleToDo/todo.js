@@ -6,6 +6,8 @@ var itemList = document.getElementById("item-list");
 //But now we want to register an event listener for on submit of the form
 form.addEventListener('submit', addTodo);
 
+itemList.addEventListener('click', removeTodo);
+
 function printChange(e){
     //console.log("on change being called");
     console.log(e.target.value);
@@ -22,16 +24,51 @@ function addTodo(e){
 function appendElement(task){
 
     var li = document.createElement("li");
-    /*
-    li.innerHTML = "<p>" + task + "</p>"
-    */
-    var div = document.createElement("div");
-    div.setAttribute("class", "item");
+
+    li.setAttribute("class", "item");
+
     var p = document.createElement("p");
     p.innerText = task;
-    div.appendChild(p);
-    li.appendChild(div);
+    li.append(p);
+    var btn = document.createElement("button");
+    btn.setAttribute("class", "delete-btn");
+    btn.innerText = "Delete Task";
+
+    li.append(btn);
     
     itemList.appendChild(li);
 
 }
+
+function removeTodo(e){
+    var todo = e.target.parentElement;
+    itemList.removeChild(todo);
+}
+
+/* There is a better way to this
+function appendElement(task){
+
+    var li = document.createElement("li");
+
+    li.setAttribute("class", "item");
+
+    var p = document.createElement("p");
+    p.innerText = task;
+    li.append(p);
+    var btn = document.createElement("button");
+    btn.setAttribute("class", "delete-btn");
+    btn.innerText = "Delete Task";
+
+    btn.addEventListener('click', removeTodo);
+
+    li.append(btn);
+    
+    itemList.appendChild(li);
+
+}
+
+function removeTodo(e){
+    var todo = e.target.parentElement;
+    itemList.removeChild(todo);
+}
+*/
