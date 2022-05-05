@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SocialHub Login</title>
+    </head>
+    <body>
+        <!-- We need to set those form attributes we talked about prev-->
+        <h1 id="error"></h1>
+        <form id="login-form">
+            <label for="username">Username</label>
+            <input type="text" required name="username" id="username"/>
+            <label for="password">Password</label>
+            <input type="password" required minlength="8" name="password" id="password"/>
+            <input type="submit" value="Login"/>
+        </form>
+        <script src="./login.js"></script>
+    </body>
+</html>

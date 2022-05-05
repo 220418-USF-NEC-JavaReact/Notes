@@ -13,6 +13,7 @@ import com.example.services.PostService;
 import com.example.services.UserService;
 import com.example.utils.ConnectionSingleton;
 import io.javalin.Javalin;
+import io.javalin.http.staticfiles.Location;
 
 import java.sql.Connection;
 
@@ -33,6 +34,7 @@ public class SocialApiDriver {
         PostController pc = new PostController(ps);
 
         Javalin server = Javalin.create(config -> {
+            config.addStaticFiles("/public", Location.CLASSPATH);
             config.enableCorsForAllOrigins();
         });
 
