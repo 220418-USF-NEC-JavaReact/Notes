@@ -63,7 +63,7 @@ Employees must select the type of reimbursement as: LODGING, TRAVEL, FOOD, or OT
 
 ## 5/6/2022 start: project 1 specs released
 
-## 5/23/2022 completion: project 1 presentations
+## 5/24/2022 completion: project 1 presentations
 
 Please take the deadline seriously
 
