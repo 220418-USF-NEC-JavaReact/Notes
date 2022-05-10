@@ -1,0 +1,12 @@
+{
+  "name": "node-example",
+  "version": "1.0.0",
+  "description": "This is a simple example for node",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Ethan McGill",
+  "license": "ISC"
+}
