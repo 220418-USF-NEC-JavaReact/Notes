@@ -16,7 +16,7 @@ public class UserService {
 
     //Typically when we create a user in a application, we are registering it
     public void registerUser(String first, String last, String email, String password){
-        User register = new User(0, first, last, email, password);
+        User register = new User(101, first, last, email, password);
         ud.createUser(register);
     }
 

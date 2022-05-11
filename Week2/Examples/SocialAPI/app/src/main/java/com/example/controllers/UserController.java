@@ -40,6 +40,8 @@ public class UserController {
             ctx.result("Username or password was incorrect");
         } else {
             //We could also, if the user is logged in successfully, setup a session for them
+            ctx.header("Access-Control-Allow-Credentials", "*");
+            ctx.header("Access-Control-Expose-Headers", "*");
             ctx.req.getSession().setAttribute("loggedIn", u.getEmail());
             ctx.req.getSession().setAttribute("id", ""+u.getUserId());
             ctx.result(om.writeValueAsString(u));

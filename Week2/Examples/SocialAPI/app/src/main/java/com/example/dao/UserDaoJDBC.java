@@ -18,8 +18,8 @@ public class UserDaoJDBC implements IUserDao{
         //To create a user, we must get our connection, create a statement, and execute said statement
         Connection c = cs.getConnection();
 
-        String sql = "insert into users (first_name, last_name, email, password) values " +
-                "('" + u.getFirstName() +"','" + u.getLastName() + "','" + u.getEmail() +"','" + u.getPassword() + "')";
+        String sql = "insert into users (user_id, first_name, last_name, email, password) values " +
+                "(" +u.getUserId() + ",'" + u.getFirstName() +"','" + u.getLastName() + "','" + u.getEmail() +"','" + u.getPassword() + "')";
 
         try {
             Statement s = c.createStatement();

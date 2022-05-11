@@ -49,7 +49,7 @@ public class SocialApiDriver {
             });
             path("posts", () -> {
                 post("/", pc.handleCreatePost);
-                get("/", pc.handleGetUserPosts);
+                get("/{id}", pc.handleGetUserPosts);
             });
         });
 

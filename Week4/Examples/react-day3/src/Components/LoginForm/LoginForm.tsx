@@ -14,11 +14,12 @@ export const LoginForm: React.FC<LoginFormProps> = ({onClick}: LoginFormProps) =
 
 
     useEffect(() => {
-        console.log("this will be called each time the email or password are updated");
-        console.log({
+        //console.log("this will be called each time the email or password are updated");
+        /*console.log({
             email,
             password
         });
+        */
     }, [email, password]);
 
 
