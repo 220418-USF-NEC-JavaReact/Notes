@@ -36,8 +36,16 @@ public class PostController {
     };
 
     public Handler handleGetUserPosts = (ctx) -> {
-        int posterId = Integer.parseInt(ctx.pathParam("id"));
-        ctx.result(om.writeValueAsString(ps.getAllUsersPosts(posterId)));
+
+        if(ctx.req.getSession().getAttribute("id") == null){
+            ctx.status(401);
+            ctx.result("You must be logged in to view your posts");
+        } else {
+            int posterId = Integer.parseInt((String) ctx.req.getSession().getAttribute("id"));
+
+            ctx.result(om.writeValueAsString(ps.getAllUsersPosts(posterId)));
+        }
+
     };
 
 }

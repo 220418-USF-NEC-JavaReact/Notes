@@ -38,6 +38,8 @@ public class SocialApiDriver {
             config.enableCorsForAllOrigins();
         });
 
+        server.before(ctx -> ctx.header("Access-Control-Allow-Credentials", "true"));
+        server.before(ctx -> ctx.header("Access-Control-Expose-Headers", "*"));
         server.routes(()-> {
             path("users", () -> {
                 post("/register", uc.handleRegister);
@@ -49,7 +51,7 @@ public class SocialApiDriver {
             });
             path("posts", () -> {
                 post("/", pc.handleCreatePost);
-                get("/{id}", pc.handleGetUserPosts);
+                get("/", pc.handleGetUserPosts);
             });
         });
 
