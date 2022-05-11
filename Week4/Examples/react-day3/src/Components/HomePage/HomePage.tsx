@@ -15,7 +15,8 @@ export const HomePage: React.FC<IUser> = (user:IUser) => {
     const navigator = useNavigate();
 
     const getPosts = async () => {
-        let res = await axios.get(`http://localhost:8000/posts/${user.userId}`);
+        axios.defaults.withCredentials = true;
+        let res = await axios.get(`http://localhost:8000/posts`);
         setPosts(res.data);
     }
 
