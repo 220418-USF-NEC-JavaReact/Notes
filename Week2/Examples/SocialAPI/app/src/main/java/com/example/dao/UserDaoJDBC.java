@@ -59,6 +59,28 @@ public class UserDaoJDBC implements IUserDao{
         }
     }
 
+    public User readUserById(int id){
+        Connection c = cs.getConnection();
+        String sql ="SELECT * FROM users WHERE user_id = ?";
+
+        try {
+            PreparedStatement ps = c.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            User loggedIn = null;
+            while(rs.next()){
+                loggedIn = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+            }
+
+            return loggedIn;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     @Override
     public User updateUser(User u) {
 

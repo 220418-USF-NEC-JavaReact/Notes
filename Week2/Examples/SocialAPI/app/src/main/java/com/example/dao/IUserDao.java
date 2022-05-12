@@ -18,6 +18,9 @@ public interface IUserDao {
     //Read
     public User readUserByEmail(String email);
 
+    //Read
+    public User readUserById(int id);
+
     //Update
     public User updateUser(User u);
 

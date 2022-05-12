@@ -78,6 +78,7 @@ public class UserController {
     };
 
     public Handler handleFullUserObject = (ctx) -> {
+        /*
         if(ctx.req.getSession().getAttribute("loggedIn") == null){
             ctx.status(401);
             ctx.result("You must be logged in to follow another user");
@@ -88,6 +89,14 @@ public class UserController {
 
             ctx.result(om.writeValueAsString(current));
         }
+         */
+
+        int userId = Integer.parseInt(ctx.pathParam("id"));
+
+        User u = us.populateUserObject(userId);
+
+        ctx.result(om.writeValueAsString(u));
+
     };
 
 }

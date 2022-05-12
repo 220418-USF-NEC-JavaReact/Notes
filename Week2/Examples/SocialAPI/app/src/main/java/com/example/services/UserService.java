@@ -50,8 +50,8 @@ public class UserService {
         ud.insertFollowing(followingId, userId);
     }
 
-    public User populateUserObject(String email){
-        User u = ud.readUserByEmail(email);
+    public User populateUserObject(int id){
+        User u = ud.readUserById(id);
 
         u.setFollowing(ud.getFollowing(u.getUserId()));
         u.setFollowers(ud.getFollowers(u.getUserId()));

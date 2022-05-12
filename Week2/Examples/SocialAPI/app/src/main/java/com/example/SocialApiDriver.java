@@ -47,7 +47,7 @@ public class SocialApiDriver {
                 put("/", uc.handleUpdateUser);
                 delete("/{id}", uc.handleDeleteUser);
                 get("/follow/{id}", uc.handleFollowUser);
-                get("/full", uc.handleFullUserObject);
+                get("/full/{id}", uc.handleFullUserObject);
             });
             path("posts", () -> {
                 post("/", pc.handleCreatePost);
