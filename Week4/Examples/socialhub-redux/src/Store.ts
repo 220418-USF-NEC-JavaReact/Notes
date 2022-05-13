@@ -2,12 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 
 //We would import our reducers from the slices we have to create
 import userReducer from "./Slices/UserSlice";
+import postsReducer from "./Slices/PostSlice";
 
 
 export const store = configureStore({
     reducer: {
         //Are the different reducers for modifying our state
-        user: userReducer
+        user: userReducer,
+        posts: postsReducer
     }
 });
 

@@ -18,6 +18,8 @@ public class PostController {
 
     public Handler handleCreatePost = (ctx) -> {
 
+        //ctx.header("Access-Control-Expose-Headers", "*");
+
         //First check to see if the use already logged in
         if(ctx.req.getSession().getAttribute("id") == null){
             ctx.status(401);
@@ -31,11 +33,17 @@ public class PostController {
             Post p = om.readValue(ctx.body(), Post.class);
 
             ps.addPost(p.getContent(), u);
+
+            ctx.status(201);
+            ctx.result("Post Created");
         }
 
     };
 
     public Handler handleGetUserPosts = (ctx) -> {
+
+
+        ctx.header("Access-Control-Expose-Headers", "*");
 
         if(ctx.req.getSession().getAttribute("id") == null){
             ctx.status(401);

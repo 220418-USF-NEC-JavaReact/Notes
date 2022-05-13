@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 import { RootState, AppDispatch } from '../../Store';
 import { getUserDetails } from '../../Slices/UserSlice';
 import { Navbar } from '../../Components/Navbar/Navbar';
+import { Post } from '../../Components/Post/Post';
 import { IPost } from '../../Interfaces/IPost';
 export const ProfilePage:React.FC = () => {
 
@@ -33,9 +34,7 @@ export const ProfilePage:React.FC = () => {
                 <div>
                     {profile.currentProfile.posts.map((post:IPost)=>{
                         return (
-                            <div>
-                                <p>{post.content}</p>
-                            </div>
+                            <Post {...post} key={post.postId} />
                         )
                     })}
                 </div>

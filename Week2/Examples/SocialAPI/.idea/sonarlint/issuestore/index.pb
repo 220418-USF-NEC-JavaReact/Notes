@@ -7,3 +7,5 @@ e
 5app/src/main/java/com/example/models/LoginObject.java,1\a\1a57721dd46ce1a0e439738e17828848e11e9560
 l
 <app/src/main/java/com/example/utils/ConnectionSingleton.java,9\d\9da10a5f6bae1e6bd0b58f4efc7a846e447a6975
+h
+8app/src/main/java/com/example/models/RegisterObject.java,1\6\166a6cbdde8c005053d34d917cbeb6028190727e

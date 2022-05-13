@@ -56,6 +56,18 @@ export const getUserDetails = createAsyncThunk(
             console.log(error);
         }
     }
+);
+
+export const logout = createAsyncThunk(
+    "user/logout",
+    async (thunkAPI) => {
+        try{
+            axios.defaults.withCredentials = true;
+            const res = axios.get("http://localhost:8000/users/logout");
+        } catch(e){
+            console.log(e);
+        }
+    }
 )
 
 //Create the slice
@@ -89,6 +101,9 @@ export const UserSlice = createSlice({
             state.loading =false;
             state.currentProfile = action.payload;
         });
+        builder.addCase(logout.fulfilled, (state, action)=> {
+            state.user = undefined;
+        })
     }
 })
 

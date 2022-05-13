@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import {LoginPage} from './Views/LoginPage/LoginPage';
 import { FeedPage } from './Views/FeedPage/FeedPage';
@@ -10,7 +10,8 @@ import {ProfilePage} from './Views/ProfilePage/ProfilePage';
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
+      <Routes >
+          <Route path="*" element={<Navigate to="/login" replace />} />
           <Route path="/login" element={<LoginPage />}/>
           <Route path="/feed" element={<FeedPage />}/>
           <Route path="/user/:id" element={<ProfilePage />}/>

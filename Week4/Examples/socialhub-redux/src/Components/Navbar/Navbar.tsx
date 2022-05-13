@@ -2,7 +2,10 @@ import React from 'react';
 
 import {Link} from 'react-router-dom';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../../Slices/UserSlice';
+import { AppDispatch } from '../../Store';
+import { clearPosts } from '../../Slices/PostSlice';
 
 import defaultImage from '../../deafultpic.jpg';
 
@@ -11,8 +14,11 @@ import { RootState } from '../../Store';
 
 export const Navbar: React.FC = () => {
 
-    const handleLogout = () => {
+    const dispatch:AppDispatch = useDispatch();
 
+    const handleLogout = () => {
+        dispatch(logout());
+        dispatch(clearPosts());
     }
 
     const user = useSelector((state:RootState) => state.user.user);

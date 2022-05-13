@@ -46,6 +46,11 @@ public class UserController {
         }
     };
 
+    public Handler handleLogout = (ctx) -> {
+        ctx.req.getSession().invalidate();
+        ctx.result("User logged out");
+    };
+
     public Handler handleUpdateUser = (ctx) -> {
       User u = om.readValue(ctx.body(), User.class);
 

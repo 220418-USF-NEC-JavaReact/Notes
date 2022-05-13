@@ -1,7 +1,7 @@
 import { IUser } from "./IUser"
 
 export interface IPost {
-    postId: number,
+    postId?: number,
     postedDate: Date,
     content: string,
     postUser: IUser
