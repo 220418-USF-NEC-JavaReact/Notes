@@ -1,0 +1,10 @@
+
+L
+java:S1611"1Remove the parentheses around the "ctx" parameter(Şô–Ãøÿÿÿÿ
+X	java:S125"<This block of commented-out lines of code should be removed.(¨•ÕĞ8×¹‰ñ‹0
+G
+java:S1611+"1Remove the parentheses around the "ctx" parameter(ö‚€í
+w
+java:S1104"\Make handleCreatePost a static final constant or non-public and provide accessors if needed.(Şô–Ãøÿÿÿÿ
+t
+java:S1104+"^Make handleGetUserPosts a static final constant or non-public and provide accessors if needed.(ö‚€í

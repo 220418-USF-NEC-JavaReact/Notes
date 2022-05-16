@@ -1,0 +1,34 @@
+
+G
+java:S1611"1Remove the parentheses around the "ctx" parameter(ÿ§¶
+S	java:S106"9Replace this use of System.out or System.err by a logger.(Æµ¦ıÿÿÿÿ
+G
+java:S1611!"1Remove the parentheses around the "ctx" parameter(Öª‰
+L
+java:S16111"1Remove the parentheses around the "ctx" parameter(Ö€ãøÿÿÿÿ
+G
+java:S16116"1Remove the parentheses around the "ctx" parameter(¢ÓäŒ
+N	java:S1069"9Replace this use of System.out or System.err by a logger.(Âæ“ú
+G
+java:S1611>"1Remove the parentheses around the "ctx" parameter(ÌØ†¿
+G
+java:S1611F"1Remove the parentheses around the "ctx" parameter(Ï­…â
+L
+java:S1611U"1Remove the parentheses around the "ctx" parameter(’õ©øÿÿÿÿ
+V	java:S125W"<This block of commented-out lines of code should be removed.(úô°¬ıÿÿÿÿ
+S
+java:S1128"=Remove this unused import 'com.example.services.PostService'.(í×Ë
+p
+java:S1104"ZMake handleRegister a static final constant or non-public and provide accessors if needed.(ÿ§¶
+m
+java:S1104!"WMake handleLogin a static final constant or non-public and provide accessors if needed.(Öª‰
+s
+java:S11041"XMake handleLogout a static final constant or non-public and provide accessors if needed.(Ö€ãøÿÿÿÿ
+r
+java:S11046"\Make handleUpdateUser a static final constant or non-public and provide accessors if needed.(¢ÓäŒ
+r
+java:S1104>"\Make handleDeleteUser a static final constant or non-public and provide accessors if needed.(ÌØ†¿
+r
+java:S1104F"\Make handleFollowUser a static final constant or non-public and provide accessors if needed.(Ï­…â
+{
+java:S1104U"`Make handleFullUserObject a static final constant or non-public and provide accessors if needed.(’õ©øÿÿÿÿ
