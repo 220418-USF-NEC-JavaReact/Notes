@@ -1,0 +1,18 @@
+
+n
+java:S1450"SRemove the "gDao" field and declare it as a local variable in the relevant methods.(Ö¹ÃÙøÿÿÿÿ
+j
+java:S1450"TRemove the "gServ" field and declare it as a local variable in the relevant methods.(ÎÜğ
+j
+java:S1450 "TRemove the "glDao" field and declare it as a local variable in the relevant methods.(™€Ÿô
+k
+java:S1450""URemove the "glServ" field and declare it as a local variable in the relevant methods.(·Ü²Ê
+i
+java:S1450"SRemove the "pDao" field and declare it as a local variable in the relevant methods.(¶á§Ñ
+j
+java:S1450"TRemove the "pServ" field and declare it as a local variable in the relevant methods.(ûÉô´
+V	java:S125"<This block of commented-out lines of code should be removed.(Âÿî±úÿÿÿÿ
+V	java:S125&"<This block of commented-out lines of code should be removed.(ãêšúÿÿÿÿ
+S	java:S1069"9Replace this use of System.out or System.err by a logger.(÷ôşÂùÿÿÿÿ
+N	java:S106="9Replace this use of System.out or System.err by a logger.(Öû˜
+S	java:S106D"9Replace this use of System.out or System.err by a logger.(êœ¥üÿÿÿÿ
