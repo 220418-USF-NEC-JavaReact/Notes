@@ -4,5 +4,6 @@ export interface IPost {
     postId?: number,
     postedDate: Date,
     content: string,
-    postUser: IUser
+    postUser?:IUser,
+    username?:string
 }

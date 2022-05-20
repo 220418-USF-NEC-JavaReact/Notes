@@ -1,6 +1,5 @@
 import {createSlice, createAsyncThunk} from  "@reduxjs/toolkit";
 import axios from "axios";
-import { Post } from "../Components/Post/Post";
 import {IPost} from "../Interfaces/IPost";
 
 interface PostSliceState{
@@ -16,10 +15,9 @@ const initialPostState: PostSliceState = {
 
 export const getPosts = createAsyncThunk(
   "posts/get",
-  async (thunkAPI) => {
+  async (userId:number, thunkAPI) => {
       try{
-          axios.defaults.withCredentials = true;
-          const res = await axios.get("http://localhost:8000/posts");
+          const res = await axios.get(`http://localhost:8000/posts/following/${userId}`);
 
           return res.data;
       } catch (e){
@@ -32,10 +30,21 @@ export const createPost = createAsyncThunk(
     "posts/create",
     async (newPost:IPost, thunkAPI) => {
         try{
-            axios.defaults.withCredentials = true;
-            const res = await axios.post("http://localhost:8000/posts/", newPost);
+            let post: IPost = {
+                postId: 0,
+                content: newPost.content,
+                postedDate: newPost.postedDate
+            }
+            const res = await axios.post(`http://localhost:8000/post?user=${newPost.postUser?.userId}`, post);
 
-            return newPost;
+            let ret:IPost = {
+                postId: res.data.postId,
+                content: res.data.content,
+                username: newPost.postUser?.username,
+                postedDate: res.data.postedDate
+            }
+
+            return ret;
         } catch (e){
             console.log(e);
         }

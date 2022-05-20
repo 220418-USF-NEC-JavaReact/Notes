@@ -11,7 +11,7 @@ export const Post:React.FC<IPost> = (post:IPost) => {
         <div className="post">
             <div className="post-profile">
                 <img className="post-image" src={defaultImage} />
-                <h3 className="post-user">{post.postUser.firstName} {post.postUser.lastName}</h3>
+                <h3 className="post-user">{post.username}</h3>
             </div>
 
             <div className="post-content">

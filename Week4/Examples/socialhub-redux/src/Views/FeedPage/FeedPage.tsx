@@ -28,7 +28,7 @@ export const FeedPage: React.FC = () => {
         }
         //If the user IS logged in, but we have not gotten their posts yet
         else if(userInfo.user && !posts.posts){
-            dispatch(getPosts());
+            dispatch(getPosts(userInfo.user.userId));
         }
 
         console.log("Userstate: ", userInfo, "Posts: ", posts);
@@ -47,5 +47,13 @@ export const FeedPage: React.FC = () => {
             </div>
         </div>
     )
+
+    /*
+    {posts.posts ? posts.posts.map((post:IPost) => {
+                    return <Post {...post} key={post.postId} />
+                }) :
+                <Loading />
+                }
+    */
 
 }

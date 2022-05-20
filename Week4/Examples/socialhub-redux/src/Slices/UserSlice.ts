@@ -17,7 +17,7 @@ const initialUserState: UserSliceState = {
 }
 
 type Login = {
-    email: string,
+    username: string,
     password: string
 }
 
@@ -25,13 +25,15 @@ export const loginUser = createAsyncThunk(
     'user/login',
     async (credentials:Login, thunkAPI) => {
         try{
-            const res = await axios.post('http://localhost:8000/users/login', credentials);
+            const res = await axios.post('http://localhost:8000/user/login', credentials);
 
             return {
                 userId: res.data.userId,
                 firstName: res.data.firstName,
                 lastName: res.data.lastName,
-                email: res.data.email
+                username:res.data.username,
+                email: res.data.email,
+                posts: res.data.posts
             }
         } catch(e){
             return thunkAPI.rejectWithValue('something went wrong');
@@ -50,6 +52,7 @@ export const getUserDetails = createAsyncThunk(
                 firstName: res.data.firstName,
                 lastName: res.data.lastName,
                 email: res.data.email,
+                username: res.data.username,
                 posts: res.data.posts
             }
         } catch(error){
