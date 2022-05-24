@@ -143,10 +143,10 @@ At the end of the day this is only a guidline, you can take whatever approach yo
 
 **5 Points** Manager can view all employees and their information
 
-**10 Points** Manager can view the reimbursements from a specific employee
+**5 Points** Manager can view the reimbursements from a specific employee
 
 **20 Points** Follow TTD and have over 75% test coverage of your service classes
 
-**10 Points** App looks and presentation
+**15 Points** App looks and presentation
 
 GLHF :)
