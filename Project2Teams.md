@@ -12,7 +12,7 @@
 3. Kenneth
 4. Nabil
 5. Robert
-6. Mohammed
+6. Mohammad
 
 ## Team 3
 1. Swathi
